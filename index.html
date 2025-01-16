@@ -3,40 +3,68 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Nosso Site</title>
-    <link rel="stylesheet" href="styles.css">
+    <title>Nossa história</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
 </head>
 <body>
-    <div class="container">
-        <header>
-            <h1>Nosso Tempo Juntos</h1>
-        </header>
+    <header>
+        <h1>Bem-vinda minha vida</h1>
+    </header>
+    <main>
         <section id="contador">
             <h2>Estamos juntos há:</h2>
-            <p id="time-together">Carregando...</p>
+            <div id="tempo-juntos">00 dias 00 horas 00 minutos 00 segundos</div>
         </section>
         <section id="mensagem">
-            <h2>Mensagem Especial</h2>
-            <textarea placeholder="Escreva sua mensagem aqui..." rows="4"></textarea>
-        </section>
-        <section id="musica">
-            <h2>Música de Fundo</h2>
-            <audio controls autoplay loop>
-                <source src="sua-musica.mp3" type="audio/mpeg">
-                Seu navegador não suporta o elemento de áudio.
-            </audio>
+            <h2>Isabela!</h2>
+            <p>
+                Nossa conexão é algo único, algo que as palavras mal conseguem descrever. 
+                Desde o momento em que nos conhecemos, soube que ela era especial. 
+                Cada sorriso, cada olhar, cada momento juntos é um presente que eu valorizo profundamente.
+            </p>
+            <p>
+                Minha <span class="highlight">esposa</span> é a pessoa mais incrível que conheço, 
+                e o amor que sinto por ela cresce a cada dia. 
+                Ela não apenas transforma os meus dias em algo melhor, mas me inspira a ser uma pessoa melhor.
+            </p>
+            <p>Com amor, Nicholas</p>
         </section>
         <section id="album">
-            <h2>Álbum de Fotos</h2>
-            <div class="photo-gallery">
-                <!-- Substitua com suas fotos -->
-                <img src="foto1.jpg" alt="Foto 1">
-                <img src="foto2.jpg" alt="Foto 2">
-                <img src="foto3.jpg" alt="Foto 3">
-                <img src="foto4.jpg" alt="Foto 4">
+            <h2>Nosso Álbum de Fotos</h2>
+            <div class="fotos">
+                <img src="img/foto1.jpeg" alt="Foto 1">
+                <img src="img/foto2.jpeg" alt="Foto 2">
+                <img src="img/foto3.jpeg" alt="Foto 3">
+                <img src="img/foto4.jpeg" alt="Foto 3">
             </div>
         </section>
-    </div>
-    <script src="script.js"></script>
+    </main>
+    <footer>
+        <p>Com amor, feito para você 💖</p>
+    </footer>
+    <audio autoplay loop>
+        <source src="audio/musica.mp3" type="audio/mpeg">
+        Seu navegador não suporta o áudio.
+    </audio>
+    <script>
+        const tempoJuntos = document.getElementById('tempo-juntos');
+
+        function atualizarContador() {
+            const dataInicial = new Date('2022-01-01'); // Data de início
+            const agora = new Date();
+            const diferenca = agora - dataInicial;
+
+            const dias = Math.floor(diferenca / (1000 * 60 * 60 * 24));
+            const horas = Math.floor((diferenca / (1000 * 60 * 60)) % 24);
+            const minutos = Math.floor((diferenca / (1000 * 60)) % 60);
+            const segundos = Math.floor((diferenca / 1000) % 60);
+
+            tempoJuntos.textContent = `${dias} dias ${horas} horas ${minutos} minutos ${segundos} segundos`;
+        }
+
+        setInterval(atualizarContador, 1000);
+        atualizarContador();
+    </script>
 </body>
 </html>
