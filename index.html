@@ -43,65 +43,10 @@
     <footer>
         <p>Com amor, feito para você 💖</p>
     </footer>
-
-    <!-- Áudio com autoplay no desktop -->
-    <audio id="music" loop>
+    <audio autoplay loop>
         <source src="audio/musica.mp3" type="audio/mpeg">
         Seu navegador não suporta o áudio.
     </audio>
-
-    <!-- Botão para dispositivos móveis -->
-    <section id="play-button" style="display: none;">
-        <button onclick="startMusic()">Clique para ouvir a música</button>
-    </section>
-
-    <script>
-        const tempoJuntos = document.getElementById('tempo-juntos');
-        const music = document.getElementById('music');
-        const playButton = document.getElementById('play-button');
-
-        // Função para atualizar o contador de tempo
-        function atualizarContador() {
-            const dataInicial = new Date('2023-03-16'); // Data de início
-            const agora = new Date();
-            const diferenca = agora - dataInicial;
-
-            const dias = Math.floor(diferenca / (1000 * 60 * 60 * 24));
-            const horas = Math.floor((diferenca / (1000 * 60 * 60)) % 24);
-            const minutos = Math.floor((diferenca / (1000 * 60)) % 60);
-            const segundos = Math.floor((diferenca / 1000) % 60);
-
-            tempoJuntos.textContent = `${dias} dias ${horas} horas ${minutos} minutos ${segundos} segundos`;
-        }
-
-        // Função para verificar se é dispositivo móvel
-        function isMobile() {
-            return /Mobi|Android/i.test(navigator.userAgent);
-        }
-
-        // Função para iniciar a música
-        function startMusic() {
-            music.play().then(() => {
-                playButton.style.display = 'none'; // Esconde o botão após iniciar a música
-            }).catch(error => {
-                console.log('Erro ao tentar iniciar a música:', error);
-            });
-        }
-
-        // Verifica se é dispositivo móvel ou desktop
-        if (!isMobile()) {
-            // Tenta tocar a música automaticamente em dispositivos desktop
-            music.play().catch(error => {
-                console.log('Erro ao tentar iniciar a música no desktop:', error);
-            });
-        } else {
-            // Exibe o botão de play nos dispositivos móveis
-            playButton.style.display = 'block';
-        }
-
-        // Atualiza o contador a cada segundo
-        setInterval(atualizarContador, 1000);
-        atualizarContador();
-    </script>
+    <script src="js/script.js"></script>
 </body>
 </html>
